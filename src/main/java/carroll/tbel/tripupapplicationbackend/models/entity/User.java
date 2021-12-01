@@ -1,4 +1,7 @@
-package carroll.tbel.tripupapplicationbackend.models;
+package carroll.tbel.tripupapplicationbackend.models.entity;
+
+import carroll.tbel.tripupapplicationbackend.models.entity.Role;
+import lombok.Builder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -8,6 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Builder
 @Table(	name = "users",
         uniqueConstraints = {
                 @UniqueConstraint(columnNames = "username"),

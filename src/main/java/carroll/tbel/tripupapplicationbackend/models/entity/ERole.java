@@ -1,4 +1,4 @@
-package carroll.tbel.tripupapplicationbackend.models;
+package carroll.tbel.tripupapplicationbackend.models.entity;
 
 public enum ERole {
     ROLE_USER,

@@ -1,6 +1,6 @@
 package carroll.tbel.tripupapplicationbackend.security.services;
 
-import carroll.tbel.tripupapplicationbackend.models.User;
+import carroll.tbel.tripupapplicationbackend.models.entity.User;
 import carroll.tbel.tripupapplicationbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,6 +20,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
 
-        return UserDetailsImpl.build(user);
+        return new UserDetailsService.build(user);
     }
 }

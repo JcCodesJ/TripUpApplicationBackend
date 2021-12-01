@@ -1,4 +1,6 @@
-package carroll.tbel.tripupapplicationbackend.models;
+package carroll.tbel.tripupapplicationbackend.models.entity;
+
+import carroll.tbel.tripupapplicationbackend.models.entity.ERole;
 
 import javax.persistence.*;
 

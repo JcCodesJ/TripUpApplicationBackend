@@ -1,6 +1,6 @@
 package carroll.tbel.tripupapplicationbackend.security.services;
 
-import carroll.tbel.tripupapplicationbackend.models.User;
+import carroll.tbel.tripupapplicationbackend.models.entity.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
