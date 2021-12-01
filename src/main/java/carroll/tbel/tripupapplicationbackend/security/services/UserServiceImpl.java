@@ -12,10 +12,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository;
-
     private final UserMapper userMapper;
 
     public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
@@ -25,7 +25,8 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<UserDTO> getAll() {
-        return userRepository.findAll().stream()
+        return userRepository.findAll()
+                .stream()
                 .map(userMapper::entityToDTO)
                 .collect(Collectors.toList())
                 ;

@@ -1,6 +1,5 @@
 package carroll.tbel.tripupapplicationbackend.models.entity;
 
-import carroll.tbel.tripupapplicationbackend.models.entity.Role;
 import lombok.Builder;
 
 import javax.persistence.*;
