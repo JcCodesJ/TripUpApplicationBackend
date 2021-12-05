@@ -3,7 +3,9 @@ package carroll.tbel.tripupapplicationbackend.controllers;
 import carroll.tbel.tripupapplicationbackend.models.entity.ERole;
 import carroll.tbel.tripupapplicationbackend.models.entity.Role;
 import carroll.tbel.tripupapplicationbackend.models.entity.User;
+import carroll.tbel.tripupapplicationbackend.payload.request.LoginRequest;
 import carroll.tbel.tripupapplicationbackend.payload.request.SignupRequest;
+import carroll.tbel.tripupapplicationbackend.payload.response.JwtResponse;
 import carroll.tbel.tripupapplicationbackend.payload.response.MessageResponse;
 import carroll.tbel.tripupapplicationbackend.repository.RoleRepository;
 import carroll.tbel.tripupapplicationbackend.repository.UserRepository;
@@ -12,14 +14,20 @@ import carroll.tbel.tripupapplicationbackend.security.services.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "http://localhost:3306", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -40,11 +48,10 @@ public class AuthController {
     JwtUtils jwtUtils;
 
     @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginForm loginForm) {
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginForm) {
 
 
-
-        /*Authentication authentication = authenticationManager.authenticate(
+        Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginForm.getUsername(), loginForm.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -59,7 +66,7 @@ public class AuthController {
                 userDetails.getId(),
                 userDetails.getUsername(),
                 userDetails.getEmail(),
-                roles));*/
+                roles));
     }
 
 

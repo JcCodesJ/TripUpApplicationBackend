@@ -1,6 +1,8 @@
 package carroll.tbel.tripupapplicationbackend.models.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -11,6 +13,8 @@ import java.util.Set;
 
 @Entity
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(	name = "users",
         uniqueConstraints = {
                 @UniqueConstraint(columnNames = "username"),
@@ -34,14 +38,16 @@ public class User {
     @Size(max = 120)
     private String password;
 
+    private boolean account_non_expired;
+    private boolean account_non_locked;
+    private boolean credentials_non_expired;
+    private boolean enabled;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
-
-    public User() {
-    }
 
     public User(String username, String email, String password) {
         this.username = username;
