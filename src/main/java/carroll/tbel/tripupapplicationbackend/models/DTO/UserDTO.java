@@ -18,5 +18,6 @@ public class UserDTO {
 
 
     private String password;
+    //TODO Remove?
 
 }

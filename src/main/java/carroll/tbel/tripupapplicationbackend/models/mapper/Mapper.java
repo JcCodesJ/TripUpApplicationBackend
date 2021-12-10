@@ -6,4 +6,5 @@ public interface Mapper <ENTITY, DTO, FORM> {
 
     ENTITY formToEntity(FORM form);
 
+
 }

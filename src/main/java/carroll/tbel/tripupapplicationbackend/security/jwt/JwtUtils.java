@@ -1,6 +1,6 @@
 package carroll.tbel.tripupapplicationbackend.security.jwt;
 
-import carroll.tbel.tripupapplicationbackend.security.services.UserDetailsImpl;
+import carroll.tbel.tripupapplicationbackend.security.services.impl.UserDetailsImpl;
 import io.jsonwebtoken.*;
 
 import org.slf4j.Logger;

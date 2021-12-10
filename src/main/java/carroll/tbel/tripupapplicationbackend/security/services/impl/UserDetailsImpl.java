@@ -1,4 +1,4 @@
-package carroll.tbel.tripupapplicationbackend.security.services;
+package carroll.tbel.tripupapplicationbackend.security.services.impl;
 
 import carroll.tbel.tripupapplicationbackend.models.entity.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;

@@ -10,7 +10,7 @@ public class SignupRequest {
 
     @NotBlank
     @Size(max = 50)
-    @Email
+    @Email//(regexp = "*@*.*")
     private String email;
 
     private Set<String> role;

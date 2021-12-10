@@ -10,7 +10,7 @@ import carroll.tbel.tripupapplicationbackend.payload.response.MessageResponse;
 import carroll.tbel.tripupapplicationbackend.repository.RoleRepository;
 import carroll.tbel.tripupapplicationbackend.repository.UserRepository;
 import carroll.tbel.tripupapplicationbackend.security.jwt.JwtUtils;
-import carroll.tbel.tripupapplicationbackend.security.services.UserDetailsImpl;
+import carroll.tbel.tripupapplicationbackend.security.services.impl.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

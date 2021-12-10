@@ -14,8 +14,4 @@ public class AgentDTO {
 
 
     private String email;
-
-
-    private String password;
-
 }

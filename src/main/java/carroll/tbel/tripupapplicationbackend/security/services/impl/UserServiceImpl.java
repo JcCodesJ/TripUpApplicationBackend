@@ -1,4 +1,4 @@
-package carroll.tbel.tripupapplicationbackend.security.services;
+package carroll.tbel.tripupapplicationbackend.security.services.impl;
 
 import carroll.tbel.tripupapplicationbackend.exceptions.ElementAlreadyExistsException;
 import carroll.tbel.tripupapplicationbackend.exceptions.ElementNotFoundException;
@@ -7,13 +7,14 @@ import carroll.tbel.tripupapplicationbackend.models.entity.User;
 import carroll.tbel.tripupapplicationbackend.models.form.UserForm;
 import carroll.tbel.tripupapplicationbackend.models.mapper.UserMapper;
 import carroll.tbel.tripupapplicationbackend.repository.UserRepository;
+import carroll.tbel.tripupapplicationbackend.security.services.UserService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
