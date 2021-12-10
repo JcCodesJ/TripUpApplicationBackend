@@ -15,23 +15,24 @@ public class ClientMapper implements Mapper<Client, ClientDTO, ClientForm > {
     public ClientMapper(ReservationMapper reservationMapper) {
         this.reservationMapper = reservationMapper;
     }
-    @Override
-    public ClientDTO toDto(Client entity) {
 
-        if ( entity == null )
+    @Override
+    public ClientDTO entityToDTO(Client client) {
+
+        if ( client == null )
             return null;
 
         return ClientDTO.builder()
-                .id( entity.getId() )
-                .username(entity.getUsername() )
-                .firstName( entity.getFirstName() )
-                .lastName( entity.getLastName() )
-                .mthdOfPay( entity.getMthdOfPay() )
-                .tel( entity.getTel() )
+                .id( client.getId() )
+                .username(client.getUsername() )
+                .firstName( client.getFirstName() )
+                .lastName( client.getLastName() )
+                .mthdOfPay( client.getMthdOfPay() )
+                .tel( client.getTel() )
                 .reservations(
-                        entity.getReservations()
+                        client.getReservations()
                                 .stream()
-                                .map(reservationMapper::toDto)
+                                .map(reservationMapper::entityToDTO)
                                 .collect(Collectors.toList())
                 )
                 .build();

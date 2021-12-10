@@ -29,7 +29,7 @@ public class VacationMapper implements Mapper< Vacation, VacationDTO, VacationFo
                 .reservations(
                         vacation.getReservations()
                                 .stream()
-                                .map( reservationMapper::toDto )
+                                .map( reservationMapper::entityToDTO )
                                 .collect(Collectors.toList())
                 )
                 .build();
@@ -40,11 +40,11 @@ public class VacationMapper implements Mapper< Vacation, VacationDTO, VacationFo
         if ( form == null)
             return null;
 
-        Vacation entity = new Vacation();
-        entity.setPackageName( form.getPackageName() );
-        entity.setType( form.getType() );
-        entity.setPrice( form.getPrice() );
-        return entity;
+        Vacation vacation = new Vacation();
+        vacation.setPackageName( form.getPackageName() );
+        vacation.setType( form.getType() );
+        vacation.setPrice( form.getPrice() );
+        return vacation;
     }
 
 }

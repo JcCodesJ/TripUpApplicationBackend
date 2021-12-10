@@ -8,23 +8,24 @@ import carroll.tbel.tripupapplicationbackend.models.form.ReservationForm;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ReservationMapper implements Mapper<ReservationDTO, ReservationForm, Reservation> {
+public class ReservationMapper implements Mapper<Reservation, ReservationDTO, ReservationForm> {
 
     @Override
-    public ReservationDTO toDto(Reservation entity) {
-        if ( entity == null )
+    public ReservationDTO entityToDTO(Reservation reservation) {
+        if ( reservation == null )
             return null;
 
         return ReservationDTO.builder()
-                .id( entity.getId() )
-                .departs( entity.getDeparts() )
-                .returns( entity.getReturns() )
-                .nmbrTravelers(entity.getNmbrTravelers() )
-                .client( toInnerDTO(entity.getBookedBy()) )
-                .vacation( toInnerDTO(entity.getVacation()) )
+                .id( reservation.getId() )
+                .departs( reservation.getDeparts() )
+                .returns( reservation.getReturns() )
+                .nmbrTravelers(reservation.getNmbrTravelers() )
+                .client( toInnerDTO(reservation.getBookedBy()) )
+                .vacation( toInnerDTO(reservation.getVacation()) )
                 .build();
     }
 
+    @Override
     public Reservation formToEntity(ReservationForm form) {
 
         if ( form == null )
@@ -33,7 +34,7 @@ public class ReservationMapper implements Mapper<ReservationDTO, ReservationForm
         Reservation reservation = new Reservation();
         reservation.setDeparts(form.getDeparts());
         reservation.setReturns(form.getReturns());
-        reservation.setNmbrTravelers(form.getNmbrTravelers);
+        reservation.setNmbrTravelers(form.getNmbrTravelers());
 
         return reservation;
     }
