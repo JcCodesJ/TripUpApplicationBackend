@@ -1,26 +1,34 @@
 package carroll.tbel.tripupapplicationbackend.controllers;
 
 import carroll.tbel.tripupapplicationbackend.models.DTO.ReservationDTO;
-import carroll.tbel.tripupapplicationbackend.models.form.ReservationRequestForm;
-import carroll.tbel.tripupapplicationbackend.security.services.ReservationService;
+import carroll.tbel.tripupapplicationbackend.models.DTO.VacationDTO;
+import carroll.tbel.tripupapplicationbackend.models.form.ReservationForm;
+import carroll.tbel.tripupapplicationbackend.models.form.VacationForm;
+import carroll.tbel.tripupapplicationbackend.security.services.impl.ReservationServiceImpl;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/reserve")
+@RequestMapping("/reservation")
 public class ReservationController{
-    public ReservationController(ReservationService service) {
-        super(service);
+
+    private final ReservationServiceImpl reservationService;
+
+    @PostMapping(path = {"", "/", "/add"})
+    public ResponseEntity<ReservationDTO> insert(@Valid @RequestBody ReservationForm reservationForm) {
+        return ResponseEntity.ok( reservationService.insert(reservationForm) );
     }
 
-    @PostMapping("/request")
-    public ResponseEntity<ReservationDTO> askForReserve(Authentication auth, @Valid @RequestBody ReservationRequestForm form) {
-        return ResponseEntity.ok( ((ReservationService)service).askForReserve( (String)auth.getPrincipal(), form));
+    public ReservationController(ReservationServiceImpl reservationService) {
+        this.reservationService = reservationService;
     }
+
+    @GetMapping("/getares")
+    public ResponseEntity<ReservationDTO> getOne(@RequestParam("reservation") long id) {
+        return ResponseEntity.ok( reservationService.getOne(id) );
+
+    }
+
 }

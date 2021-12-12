@@ -6,6 +6,9 @@ import carroll.tbel.tripupapplicationbackend.models.entity.Reservation;
 import carroll.tbel.tripupapplicationbackend.models.entity.Vacation;
 import carroll.tbel.tripupapplicationbackend.models.form.ReservationForm;
 import org.springframework.stereotype.Service;
+import carroll.tbel.tripupapplicationbackend.security.services.impl.VacationServiceImpl;
+
+import java.time.LocalDate;
 
 @Service
 public class ReservationMapper implements Mapper<Reservation, ReservationDTO, ReservationForm> {
@@ -32,10 +35,11 @@ public class ReservationMapper implements Mapper<Reservation, ReservationDTO, Re
             return null;
 
         Reservation reservation = new Reservation();
-        reservation.setDeparts(form.getDeparts());
-        reservation.setReturns(form.getReturns());
+        reservation.setDeparts(LocalDate.parse(form.getDeparts()));
+        reservation.setReturns(LocalDate.parse(form.getReturns()));
         reservation.setNmbrTravelers(form.getNmbrTravelers());
-
+        reservation.setVacation(form.getPackageName());
+        //reservation.setClient("test client");
         return reservation;
     }
 

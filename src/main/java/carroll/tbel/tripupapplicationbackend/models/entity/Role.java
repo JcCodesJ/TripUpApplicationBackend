@@ -1,12 +1,19 @@
 package carroll.tbel.tripupapplicationbackend.models.entity;
 
-import carroll.tbel.tripupapplicationbackend.models.entity.ERole;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "roles")
 public class Role {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -15,12 +22,12 @@ public class Role {
     @Column(length = 20)
     private ERole name;
 
-    public Role() {
-
-    }
-
     public Role(ERole name) {
         this.name = name;
+    }
+
+    public ERole getName() {
+        return name;
     }
 
     public Integer getId() {
@@ -31,9 +38,6 @@ public class Role {
         this.id = id;
     }
 
-    public ERole getName() {
-        return name;
-    }
 
     public void setName(ERole name) {
         this.name = name;

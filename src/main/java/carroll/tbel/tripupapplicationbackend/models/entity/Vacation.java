@@ -19,8 +19,11 @@ public class Vacation {
     //@Id
     //private Long id;
     @Id
-    @Column(name = "packageName")
+    @Column(name = "package_name")
     private String packageName;
+
+    @Column(name = "description")
+    private String description;
 
     @Column(nullable = false)
     @Enumerated( EnumType.STRING )

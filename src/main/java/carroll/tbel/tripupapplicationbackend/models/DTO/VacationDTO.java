@@ -13,6 +13,7 @@ public class VacationDTO {
     private String packageName;
     private VacationType vacationType;
     private double price;
+    private String description;
 
     private List<ReservationDTO> reservations;
 

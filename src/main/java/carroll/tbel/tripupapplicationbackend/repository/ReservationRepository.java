@@ -1,4 +1,7 @@
 package carroll.tbel.tripupapplicationbackend.repository;
 
-public interface ReservationRepository {
+import carroll.tbel.tripupapplicationbackend.models.entity.Reservation;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 }

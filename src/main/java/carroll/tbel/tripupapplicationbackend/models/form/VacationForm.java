@@ -21,11 +21,15 @@ public class VacationForm {
     @Min(0)
     private double price;
 
+    @NotBlank
+    private String description;
+
     public Vacation formToEntity() {
         Vacation vacation = new Vacation();
         vacation.setPackageName(packageName);
         vacation.setType(type);
         vacation.setPrice(price);
+        vacation.setDescription(description);
         return vacation;
     }
 

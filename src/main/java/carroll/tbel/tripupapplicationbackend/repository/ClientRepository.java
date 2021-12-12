@@ -1,4 +1,7 @@
 package carroll.tbel.tripupapplicationbackend.repository;
 
-public interface ClientRepository {
+import carroll.tbel.tripupapplicationbackend.models.entity.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ClientRepository extends JpaRepository<Client, Long> {
 }

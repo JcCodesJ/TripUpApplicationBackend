@@ -34,4 +34,10 @@ public class Reservation {
     @ManyToOne
     private Client bookedBy;
 
+
+    public void setVacation(String packageName){
+        this.vacation = new Vacation();
+        this.vacation.setDescription(packageName);
+    }
+
 }

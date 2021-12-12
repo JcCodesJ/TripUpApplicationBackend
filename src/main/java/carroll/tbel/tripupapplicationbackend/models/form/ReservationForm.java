@@ -10,11 +10,12 @@ import java.time.LocalDate;
 @Validated
 public class ReservationForm {
 
-    @Future
-    private LocalDate departs;
+    private String packageName;
+    //@Future
+    private String departs;
 
-    @Future
-    private LocalDate returns;
+    //Future
+    private String returns;
 
     private int nmbrTravelers;
 

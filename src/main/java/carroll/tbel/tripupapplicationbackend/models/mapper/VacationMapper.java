@@ -26,6 +26,7 @@ public class VacationMapper implements Mapper< Vacation, VacationDTO, VacationFo
                 .packageName( vacation.getPackageName() )
                 .vacationType( vacation.getType() )
                 .price( vacation.getPrice() )
+                .description( vacation.getDescription() )
                 .reservations(
                         vacation.getReservations()
                                 .stream()
