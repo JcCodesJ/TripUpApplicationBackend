@@ -35,9 +35,9 @@ public class Reservation {
     private Client bookedBy;
 
 
-    public void setVacation(String packageName){
-        this.vacation = new Vacation();
-        this.vacation.setDescription(packageName);
-    }
+//    public void setVacation(String packageName){
+//        this.vacation = new Vacation();
+//        this.vacation.setDescription(packageName);
+//    }
 
 }
