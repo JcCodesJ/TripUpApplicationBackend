@@ -32,7 +32,7 @@ public class Reservation {
     private Vacation vacation;
 
     @ManyToOne
-    private Client bookedBy;
+    private User bookedBy;
 
 
 //    public void setVacation(String packageName){

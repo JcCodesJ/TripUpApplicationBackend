@@ -3,6 +3,7 @@ package carroll.tbel.tripupapplicationbackend.models.mapper;
 import carroll.tbel.tripupapplicationbackend.models.DTO.ReservationDTO;
 import carroll.tbel.tripupapplicationbackend.models.entity.Client;
 import carroll.tbel.tripupapplicationbackend.models.entity.Reservation;
+import carroll.tbel.tripupapplicationbackend.models.entity.User;
 import carroll.tbel.tripupapplicationbackend.models.entity.Vacation;
 import carroll.tbel.tripupapplicationbackend.models.form.ReservationForm;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class ReservationMapper implements Mapper<Reservation, ReservationDTO, Re
                 .departs( reservation.getDeparts() )
                 .returns( reservation.getReturns() )
                 .nmbrTravelers(reservation.getNmbrTravelers() )
-                .client( toInnerDTO(reservation.getBookedBy()) )
+                .user( toInnerDTO(reservation.getBookedBy()) )
                 .vacation( toInnerDTO(reservation.getVacation()) )
                 .build();
     }
@@ -54,16 +55,14 @@ public class ReservationMapper implements Mapper<Reservation, ReservationDTO, Re
                 .build();
     }
 
-    private ReservationDTO.ClientDTO toInnerDTO(Client entity) {
+    private ReservationDTO.UserDTO toInnerDTO(User entity) {
         if ( entity == null )
             return null;
 
-        return ReservationDTO.ClientDTO.builder()
+        return ReservationDTO.UserDTO.builder()
                 .username(entity.getUsername() )
-                .firstName(entity.getFirstName() )
-                .lastName(entity.getLastName() )
-                .tel(entity.getTel() )
-                .mthdOfPay( entity.getMthdOfPay() )
+                .email(entity.getEmail() )
+                .id(entity.getId() )
                 .build();
     }
 }

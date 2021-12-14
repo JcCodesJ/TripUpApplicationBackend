@@ -35,4 +35,7 @@ public class Vacation {
     @OneToMany(mappedBy = "vacation", fetch = FetchType.EAGER)
     private Set<Reservation> reservations = new HashSet<>();
 
+    @Column(name = "picture_address")
+    private String picture_address;
+
 }

@@ -14,6 +14,7 @@ public class VacationDTO {
     private VacationType vacationType;
     private double price;
     private String description;
+    private String picture_address;
 
     private List<ReservationDTO> reservations;
 

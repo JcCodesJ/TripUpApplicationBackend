@@ -27,6 +27,7 @@ public class VacationMapper implements Mapper< Vacation, VacationDTO, VacationFo
                 .vacationType( vacation.getType() )
                 .price( vacation.getPrice() )
                 .description( vacation.getDescription() )
+                .picture_address( vacation.getPicture_address() )
                 .reservations(
                         vacation.getReservations()
                                 .stream()
@@ -45,6 +46,7 @@ public class VacationMapper implements Mapper< Vacation, VacationDTO, VacationFo
         vacation.setPackageName( form.getPackageName() );
         vacation.setType( form.getType() );
         vacation.setPrice( form.getPrice() );
+        vacation.setPicture_address( form.getPicture_address() );
         return vacation;
     }
 

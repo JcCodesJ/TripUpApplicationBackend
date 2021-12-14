@@ -24,12 +24,15 @@ public class VacationForm {
     @NotBlank
     private String description;
 
+    private String picture_address;
+
     public Vacation formToEntity() {
         Vacation vacation = new Vacation();
         vacation.setPackageName(packageName);
         vacation.setType(type);
         vacation.setPrice(price);
         vacation.setDescription(description);
+        vacation.setPicture_address(picture_address);
         return vacation;
     }
 

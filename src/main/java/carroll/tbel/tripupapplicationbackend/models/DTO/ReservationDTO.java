@@ -16,17 +16,21 @@ public class ReservationDTO {
     private LocalDate returns;
     private int nmbrTravelers;
 
-    private ReservationDTO.ClientDTO client;
+    private ReservationDTO.UserDTO user;
     private ReservationDTO.VacationDTO vacation;
 
     @Data
     @Builder
-    public static class ClientDTO {
+    public static class UserDTO {
+        private Long id;
+
+
         private String username;
-        private String firstName;
-        private String lastName;
-        private String tel;
-        private List<String> mthdOfPay;
+
+
+        private String email;
+
+
     }
 
     @Data

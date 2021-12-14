@@ -33,6 +33,7 @@ public class VacationController {
 
     @GetMapping("getvacas")
     public ResponseEntity<List<VacationDTO>> getAll() {
+        //ResponseEntity<List<VacationDTO>> a = ResponseEntity.ok( vacationService.getAll() );
         return ResponseEntity.ok( vacationService.getAll() );
     }
 

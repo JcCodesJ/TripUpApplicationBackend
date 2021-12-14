@@ -71,7 +71,7 @@ public class ReservationServiceImpl implements ReservationService{
         Reservation toInsert = reservationMapper.formToEntity( form );
 
         // get the client and set it in the reservation
-        Client client = clientRepository.findByUsername( username )
+        User user = userRepository.findByUsername( username )
                 .orElseThrow(() -> new UsernameNotFoundException("username not found") );
 
         // get the vacation and set it in the reservation
@@ -79,7 +79,7 @@ public class ReservationServiceImpl implements ReservationService{
                 .orElseThrow(ElementNotFoundException::new);
 
         toInsert.setVacation( vacation );
-        toInsert.setBookedBy( client );
+        toInsert.setBookedBy( user );
 
         toInsert = reservationRepository.save(toInsert);
         return reservationMapper.entityToDTO(toInsert);
