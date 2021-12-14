@@ -6,4 +6,7 @@ public class ElementAlreadyExistsException extends RuntimeException{
         super("The element already exists");
     }
 
+    public ElementAlreadyExistsException(String message) {
+        super(message);
+    }
 }

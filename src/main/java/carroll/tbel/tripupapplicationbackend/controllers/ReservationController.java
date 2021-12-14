@@ -1,9 +1,7 @@
 package carroll.tbel.tripupapplicationbackend.controllers;
 
 import carroll.tbel.tripupapplicationbackend.models.DTO.ReservationDTO;
-import carroll.tbel.tripupapplicationbackend.models.DTO.VacationDTO;
 import carroll.tbel.tripupapplicationbackend.models.form.ReservationForm;
-import carroll.tbel.tripupapplicationbackend.models.form.VacationForm;
 import carroll.tbel.tripupapplicationbackend.security.services.impl.ReservationServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -24,7 +22,6 @@ public class ReservationController{
         return ResponseEntity.ok(reservationService.askForReserve(username, reservationForm));
     }
 
-
     public ReservationController(ReservationServiceImpl reservationService) {
         this.reservationService = reservationService;
     }
@@ -32,7 +29,5 @@ public class ReservationController{
     @GetMapping("/getares")
     public ResponseEntity<ReservationDTO> getOne(@RequestParam("reservation") long id) {
         return ResponseEntity.ok( reservationService.getOne(id) );
-
     }
-
 }

@@ -1,6 +1,5 @@
 package carroll.tbel.tripupapplicationbackend.models.form;
 
-import carroll.tbel.tripupapplicationbackend.models.entity.Vacation;
 import carroll.tbel.tripupapplicationbackend.models.entity.VacationType;
 import lombok.Data;
 import org.springframework.validation.annotation.Validated;

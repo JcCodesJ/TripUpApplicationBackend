@@ -38,7 +38,7 @@ public class ReservationMapper implements Mapper<Reservation, ReservationDTO, Re
         reservation.setDeparts(LocalDate.parse(form.getDeparts()));
         reservation.setReturns(LocalDate.parse(form.getReturns()));
         reservation.setNmbrTravelers(form.getNmbrTravelers());
-//        reservation.setVacation(form.getPackageName());
+//        reservation.setId(form.getPackageName());
 //        reservation.setClient("test client");
         return reservation;
     }

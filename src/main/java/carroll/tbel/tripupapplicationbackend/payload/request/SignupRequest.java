@@ -1,7 +1,6 @@
 package carroll.tbel.tripupapplicationbackend.payload.request;
 
 import javax.validation.constraints.*;
-import java.util.Set;
 
 public class SignupRequest {
     @NotBlank
@@ -10,14 +9,19 @@ public class SignupRequest {
 
     @NotBlank
     @Size(max = 50)
-    @Email//(regexp = "*@*.*")
+    @Email
     private String email;
-
-    //private Set<String> role;
 
     @NotBlank
     @Size(min = 6, max = 40)
     private String password;
+
+    //Add client decision lines
+
+    @NotBlank
+    @Size(min = 10, max = 25)
+    private String tel;
+
 
     public String getUsername() {
         return username;
@@ -43,11 +47,4 @@ public class SignupRequest {
         this.password = password;
     }
 
-//    public Set<String> getRole() {
-//        return this.role;
-//    }
-//
-//    public void setRole(Set<String> role) {
-//        this.role = role;
-//    }
 }
