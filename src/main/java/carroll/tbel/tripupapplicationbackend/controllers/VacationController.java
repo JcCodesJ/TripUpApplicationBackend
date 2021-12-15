@@ -25,7 +25,7 @@ public class VacationController {
         return ResponseEntity.ok( vacationService.insert(vacationForm) );
     }
 
-    // base/getavaca?package=some_name
+
     @GetMapping("/getavaca")
     public ResponseEntity<VacationDTO> getOne(@RequestParam("package") String packageName) {
         return ResponseEntity.ok( vacationService.getOne(packageName) );

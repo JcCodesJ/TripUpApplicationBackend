@@ -16,7 +16,6 @@ public class SignupRequest {
     @Size(min = 6, max = 40)
     private String password;
 
-    //Add client decision lines
 
     @NotBlank
     @Size(min = 10, max = 25)

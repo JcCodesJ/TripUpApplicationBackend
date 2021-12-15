@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Set;
 
-@Component
+//@Component
 public class DatabaseFiller implements InitializingBean {
 
     private final UserRepository userRepository;
@@ -61,8 +61,8 @@ public class DatabaseFiller implements InitializingBean {
         v.setType(VacationType.PREMADE);
         v.setPackageName("Tropicality");
         v.setPrice(4000);
-        v.setDescription("A Tropicality and relaxing island paradise A beautiful and relaxing island paradise\n" +
-                "Stay in an amazing ocean suite situated just above the water\n" +
+        v.setDescription("A Tropicality and relaxing island paradise A beautiful and relaxing island paradise" +
+                "Stay in an amazing ocean suite situated just above the water" +
                 "Go on a snorkeling adventure and see the local sea-life");
         vacationRepository.save(v);
 
