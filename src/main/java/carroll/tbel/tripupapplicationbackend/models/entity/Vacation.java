@@ -16,8 +16,6 @@ import java.util.Set;
 @Getter @Setter
 public class Vacation {
 
-    //@Id
-    //private Long id;
     @Id
     @Column(name = "package_name")
     private String packageName;

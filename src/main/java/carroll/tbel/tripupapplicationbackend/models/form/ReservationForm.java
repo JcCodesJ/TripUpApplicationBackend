@@ -3,6 +3,7 @@ package carroll.tbel.tripupapplicationbackend.models.form;
 import lombok.Data;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Constraint;
 import javax.validation.constraints.Future;
 
 @Data
@@ -10,10 +11,11 @@ import javax.validation.constraints.Future;
 public class ReservationForm {
 
     private String packageName;
-    //@Future
+
+    @Future
     private String departs;
 
-    //Future
+    @Future
     private String returns;
 
     private int nmbrTravelers;

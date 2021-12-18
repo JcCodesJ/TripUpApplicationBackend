@@ -1,5 +1,8 @@
 package carroll.tbel.tripupapplicationbackend.controllers;
 
+import carroll.tbel.tripupapplicationbackend.models.entity.ERole;
+import carroll.tbel.tripupapplicationbackend.models.entity.Role;
+import carroll.tbel.tripupapplicationbackend.models.entity.User;
 import carroll.tbel.tripupapplicationbackend.payload.request.LoginRequest;
 import carroll.tbel.tripupapplicationbackend.payload.request.SignupRequest;
 import carroll.tbel.tripupapplicationbackend.payload.response.JwtResponse;
@@ -19,7 +22,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
@@ -78,35 +83,16 @@ public class AuthController {
                     .body(new MessageResponse("Error: Email is already in use!"));
         }
 
-//        Set<String> strRoles = signUpRequest.getRole();
-//        Set<Role> roles = new HashSet<>();
-//
-//        if (strRoles == null) {
-//            Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-//                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-//            roles.add(userRole);
-//        } else {
-//            strRoles.forEach(role -> {
-//                switch (role) {
-//                    case "admin" -> {
-//                        Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
-//                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-//                        roles.add(adminRole);
-//                    }
-//                    case "agent" -> {
-//                        Role agentRole = roleRepository.findByName(ERole.ROLE_AGENT)
-//                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-//                        roles.add(agentRole);
-//                    }
-//                    default -> {
-//                        Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-//                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-//                        roles.add(userRole);
-//                    }
-//                }
-//            });
-//}
-//        user.setRoles(roles);
+        User user = new User(signUpRequest.getUsername(),
+                signUpRequest.getEmail(),
+                encoder.encode(signUpRequest.getPassword()));
+        Set<Role> roles = new HashSet<>();
+        String a = String.valueOf(ERole.ROLE_USER);
+        Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+        roles.add(userRole);
+        user.setRoles(roles);
+        userRepository.save(user);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }

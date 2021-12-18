@@ -1,13 +1,11 @@
 package carroll.tbel.tripupapplicationbackend.models.mapper;
 
 import carroll.tbel.tripupapplicationbackend.models.DTO.ReservationDTO;
-import carroll.tbel.tripupapplicationbackend.models.entity.Client;
 import carroll.tbel.tripupapplicationbackend.models.entity.Reservation;
 import carroll.tbel.tripupapplicationbackend.models.entity.User;
 import carroll.tbel.tripupapplicationbackend.models.entity.Vacation;
 import carroll.tbel.tripupapplicationbackend.models.form.ReservationForm;
 import org.springframework.stereotype.Service;
-import carroll.tbel.tripupapplicationbackend.security.services.impl.VacationServiceImpl;
 
 import java.time.LocalDate;
 
