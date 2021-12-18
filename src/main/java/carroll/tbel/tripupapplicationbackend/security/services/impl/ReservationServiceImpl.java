@@ -2,12 +2,11 @@ package carroll.tbel.tripupapplicationbackend.security.services.impl;
 
 import carroll.tbel.tripupapplicationbackend.exceptions.ElementNotFoundException;
 import carroll.tbel.tripupapplicationbackend.models.DTO.ReservationDTO;
-import carroll.tbel.tripupapplicationbackend.models.entity.Reservation;
-import carroll.tbel.tripupapplicationbackend.models.entity.User;
-import carroll.tbel.tripupapplicationbackend.models.entity.Vacation;
+import carroll.tbel.tripupapplicationbackend.models.entity.*;
 import carroll.tbel.tripupapplicationbackend.models.form.ReservationForm;
 import carroll.tbel.tripupapplicationbackend.models.mapper.ReservationMapper;
 import carroll.tbel.tripupapplicationbackend.repository.ReservationRepository;
+import carroll.tbel.tripupapplicationbackend.repository.RoleRepository;
 import carroll.tbel.tripupapplicationbackend.repository.UserRepository;
 import carroll.tbel.tripupapplicationbackend.repository.VacationRepository;
 import carroll.tbel.tripupapplicationbackend.security.services.ReservationService;
@@ -16,6 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ReservationServiceImpl implements ReservationService{
@@ -24,18 +24,41 @@ public class ReservationServiceImpl implements ReservationService{
     private final ReservationMapper reservationMapper;
     private final ReservationRepository reservationRepository;
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
-    public ReservationServiceImpl(ReservationRepository reservationRepository, VacationRepository vacationRepository, ReservationMapper reservationMapper, UserRepository userRepository) {
+    public ReservationServiceImpl(ReservationRepository reservationRepository, VacationRepository vacationRepository, ReservationMapper reservationMapper, UserRepository userRepository,RoleRepository roleRepository) {
         this.vacationRepository = vacationRepository;
         this.reservationMapper = reservationMapper;
         this.reservationRepository = reservationRepository;
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+    }
+
+
+    public List<ReservationDTO> getAll(String username) {
+        // get the client and set it in the reservation
+        User user = userRepository.findByUsername( username )
+                .orElseThrow(() -> new UsernameNotFoundException("username not found") );
+        Role agentRole = roleRepository.findByName(ERole.ROLE_AGENT)
+                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+        if(user.getRoles().contains(agentRole)){
+            return reservationRepository.findAll()
+                    .stream()
+                    .map(reservationMapper::entityToDTO)
+                    .collect(Collectors.toList());
+        }else{
+            throw new RuntimeException("Error: Role not matching");
+        }
+
     }
 
 
     @Override
     public List<ReservationDTO> getAll() {
-        return null;
+        return reservationRepository.findAll()
+                .stream()
+                .map(reservationMapper::entityToDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -60,7 +83,6 @@ public class ReservationServiceImpl implements ReservationService{
 
     @Override
     public ReservationDTO askForReserve(String username, ReservationForm form) {
-        System.out.println(form);
         Reservation toInsert = reservationMapper.formToEntity( form );
 
         // get the client and set it in the reservation
@@ -77,4 +99,25 @@ public class ReservationServiceImpl implements ReservationService{
         toInsert = reservationRepository.save(toInsert);
         return reservationMapper.entityToDTO(toInsert);
     }
+
+
+    @Override
+    public List<ReservationDTO> getReservationByBookedBy_Id(String username) {
+        // get the user
+        User user = userRepository.findByUsername( username )
+                .orElseThrow(() -> new UsernameNotFoundException("username not found") );
+        /*List<ReservationDTO> allReservations = ArrayList();
+        allReservations = getAll();
+        List<ReservationDTO> toSend = ArrayList();
+        int i = 0;
+        while(i < allReservations.size()){
+            if(allReservations.get(i).getBookedBy() == )
+        }
+        return getAll();*/
+        return reservationRepository.findAllByBookedBy(user)
+                .stream()
+                .map(reservationMapper::entityToDTO)
+                .collect(Collectors.toList());
+    }
+
 }

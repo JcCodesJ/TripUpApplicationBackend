@@ -22,7 +22,7 @@ public class ReservationMapper implements Mapper<Reservation, ReservationDTO, Re
                 .departs( reservation.getDeparts() )
                 .returns( reservation.getReturns() )
                 .nmbrTravelers(reservation.getNmbrTravelers() )
-                .user( toInnerDTO(reservation.getBookedBy()) )
+                .bookedBy( toInnerDTO(reservation.getBookedBy()) )
                 .vacation( toInnerDTO(reservation.getVacation()) )
                 .build();
     }

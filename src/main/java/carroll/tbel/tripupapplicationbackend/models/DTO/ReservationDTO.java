@@ -1,6 +1,7 @@
 package carroll.tbel.tripupapplicationbackend.models.DTO;
 
 import carroll.tbel.tripupapplicationbackend.models.entity.VacationType;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -16,7 +17,7 @@ public class ReservationDTO {
     private LocalDate returns;
     private int nmbrTravelers;
 
-    private ReservationDTO.UserDTO user;
+    private ReservationDTO.UserDTO bookedBy;
     private ReservationDTO.VacationDTO vacation;
 
     @Data
