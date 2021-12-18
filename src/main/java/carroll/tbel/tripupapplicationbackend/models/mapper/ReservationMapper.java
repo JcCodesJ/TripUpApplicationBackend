@@ -24,6 +24,7 @@ public class ReservationMapper implements Mapper<Reservation, ReservationDTO, Re
                 .nmbrTravelers(reservation.getNmbrTravelers() )
                 .bookedBy( toInnerDTO(reservation.getBookedBy()) )
                 .vacation( toInnerDTO(reservation.getVacation()) )
+                .price( reservation.getPrice() )
                 .build();
     }
 
@@ -37,6 +38,7 @@ public class ReservationMapper implements Mapper<Reservation, ReservationDTO, Re
         reservation.setDeparts(LocalDate.parse(form.getDeparts()));
         reservation.setReturns(LocalDate.parse(form.getReturns()));
         reservation.setNmbrTravelers(form.getNmbrTravelers());
+        reservation.setPrice(form.getPrice());
 //        reservation.setId(form.getPackageName());
 //        reservation.setClient("test client");
         return reservation;

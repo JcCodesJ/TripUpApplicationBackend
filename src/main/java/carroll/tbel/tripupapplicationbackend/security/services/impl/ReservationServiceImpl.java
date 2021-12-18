@@ -14,6 +14,9 @@ import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -92,9 +95,10 @@ public class ReservationServiceImpl implements ReservationService{
         // get the vacation and set it in the reservation
         Vacation vacation = vacationRepository.findById( form.getPackageName() )
                 .orElseThrow(ElementNotFoundException::new);
-
         toInsert.setVacation( vacation );
         toInsert.setBookedBy( user );
+        double days = Duration.between(toInsert.getDeparts().atStartOfDay(), toInsert.getReturns().atStartOfDay()).toDays();
+        toInsert.setPrice( vacation.getPrice() * toInsert.getNmbrTravelers() * days);
 
         toInsert = reservationRepository.save(toInsert);
         return reservationMapper.entityToDTO(toInsert);

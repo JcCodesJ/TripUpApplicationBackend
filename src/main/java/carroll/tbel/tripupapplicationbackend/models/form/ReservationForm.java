@@ -20,4 +20,6 @@ public class ReservationForm {
 
     private int nmbrTravelers;
 
+    private int price;
+
 }

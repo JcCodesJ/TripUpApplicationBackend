@@ -16,6 +16,7 @@ public class ReservationDTO {
     private LocalDate departs;
     private LocalDate returns;
     private int nmbrTravelers;
+    private double price;
 
     private ReservationDTO.UserDTO bookedBy;
     private ReservationDTO.VacationDTO vacation;

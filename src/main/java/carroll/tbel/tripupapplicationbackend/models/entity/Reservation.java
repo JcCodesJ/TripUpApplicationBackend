@@ -28,6 +28,9 @@ public class Reservation {
     @Column(nullable = false)
     private int nmbrTravelers;
 
+    @Column(nullable = false)
+    private double price;
+
     @ManyToOne
     private Vacation vacation;
 
