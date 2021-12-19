@@ -15,6 +15,7 @@ public class VacationDTO {
     private double price;
     private String description;
     private String picture_address;
+    private boolean hidden;
 
     private List<ReservationDTO> reservations;
 

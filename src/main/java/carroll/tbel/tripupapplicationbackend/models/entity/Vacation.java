@@ -36,4 +36,7 @@ public class Vacation {
     @Column(name = "picture_address")
     private String picture_address;
 
+    @Column(name = "hidden")
+    private boolean hidden;
+
 }

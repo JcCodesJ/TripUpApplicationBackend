@@ -26,6 +26,8 @@ public class VacationForm {
 
     private String picture_address;
 
+    private boolean hidden;
+
     public Vacation formToEntity() {
         Vacation vacation = new Vacation();
         vacation.setPackageName(packageName);
@@ -33,6 +35,7 @@ public class VacationForm {
         vacation.setPrice(price);
         vacation.setDescription(description);
         vacation.setPicture_address(picture_address);
+        vacation.setHidden(hidden);
         return vacation;
     }
 
