@@ -110,14 +110,7 @@ public class ReservationServiceImpl implements ReservationService{
         // get the user
         User user = userRepository.findByUsername( username )
                 .orElseThrow(() -> new UsernameNotFoundException("username not found") );
-        /*List<ReservationDTO> allReservations = ArrayList();
-        allReservations = getAll();
-        List<ReservationDTO> toSend = ArrayList();
-        int i = 0;
-        while(i < allReservations.size()){
-            if(allReservations.get(i).getBookedBy() == )
-        }
-        return getAll();*/
+
         return reservationRepository.findAllByBookedBy(user)
                 .stream()
                 .map(reservationMapper::entityToDTO)

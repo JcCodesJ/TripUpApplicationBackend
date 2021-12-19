@@ -93,7 +93,6 @@ public class VacationServiceImpl implements ServiceCRUD<VacationDTO, VacationFor
             throw new RuntimeException("Error: Role not matching");
         }
 
-
     }
 
     public List<VacationDTO> findAllByHiddenIsNot() {
